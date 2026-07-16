@@ -37,7 +37,7 @@ jobs:
             "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" \
             | jq -r '.value')
       
-          echo "$TOKEN" | cut -d '.' -f2 | base64 -d
+          echo "$TOKEN"
 
       - uses: aws-actions/configure-aws-credentials@v4
         with:
