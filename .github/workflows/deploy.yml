@@ -46,6 +46,8 @@ jobs:
 
       - run: npm install -g serverless@3
 
+      - run: npm install -g serverless-python-requirements
+
       - run: serverless deploy --verbose
 
       - run: echo "✅ Deployment Complete!"
