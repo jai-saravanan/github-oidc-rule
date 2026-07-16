@@ -31,7 +31,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::122941220195:role/serverless-deployment
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: us-east-1
 
       - run: npm install -g serverless
 
