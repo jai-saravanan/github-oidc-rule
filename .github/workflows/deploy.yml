@@ -28,16 +28,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Debug OIDC Claims
-        run: |
-          echo "Getting OIDC token..."
+      # - name: Debug OIDC Claims
+      #   run: |
+      #     echo "Getting OIDC token..."
       
-          TOKEN=$(curl -s \
-            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" \
-            | jq -r '.value')
+      #     TOKEN=$(curl -s \
+      #       -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+      #       "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com" \
+      #       | jq -r '.value')
       
-          echo "$TOKEN"
+      #     echo "$TOKEN"
 
       - uses: aws-actions/configure-aws-credentials@v4
         with:
