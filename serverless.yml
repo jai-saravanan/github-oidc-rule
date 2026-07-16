@@ -1,0 +1,43 @@
+service: customer-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: us-east-1
+  architecture: arm64
+  memorySize: 256
+  timeout: 30
+  httpApi:
+    cors: true
+
+functions:
+  api:
+    handler: lambda_handler.handler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: ANY
+      - httpApi:
+          path: /
+          method: ANY
+
+package:
+  individually: false
+  patterns:
+    - '!node_modules/**'
+    - '!venv/**'
+    - '!.git/**'
+    - '!.gitignore'
+    - '!README.md'
+    - '!DEPLOYMENT_GUIDE.md'
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    slim: true
+    strip: false
