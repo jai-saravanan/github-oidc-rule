@@ -44,7 +44,7 @@ jobs:
           role-to-assume: arn:aws:iam::122941220195:role/serverless-deployment
           aws-region: us-east-1
 
-      - run: npm install -g serverless
+      - run: npm install -g serverless@3
 
       - run: serverless deploy --verbose
 
