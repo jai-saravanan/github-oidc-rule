@@ -30,7 +30,7 @@ jobs:
 
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-role
+          role-to-assume: arn:aws:iam::122941220195:role/serverless-deployment
           aws-region: ${{ env.AWS_REGION }}
 
       - run: npm install -g serverless
