@@ -8,6 +8,7 @@ on:
 
 env:
   AWS_REGION: us-east-1
+  ACTIONS_STEP_DEBUG: true
 
 permissions:
   id-token: write
@@ -43,6 +44,21 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::122941220195:role/serverless-deployment
           aws-region: us-east-1
+
+      - name: Display AWS Credentials Info (Demo)
+        run: |
+          echo "✅ OIDC Authentication Successful!"
+          echo ""
+          echo "AWS Temporary Credentials Generated:"
+          echo "- Access Key ID: ${AWS_ACCESS_KEY_ID:0:10}***"
+          echo "- Secret Access Key: ${AWS_SECRET_ACCESS_KEY:0:10}***"
+          echo "- Session Token: ${AWS_SESSION_TOKEN:0:20}***"
+
+          echo ""
+          echo "Credentials expire automatically (1 hour)"
+          echo ""
+          echo "Who is GitHub authenticated as:"
+          aws sts get-caller-identity
 
       - run: npm install -g serverless@3
 
